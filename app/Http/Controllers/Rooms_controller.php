@@ -1,10 +1,10 @@
 <?php
-
+use App\Room;
 namespace App\Http\Controllers;
-
+use App\Hotel;
 use Illuminate\Http\Request;
 
-class Room_controller extends Controller
+class Rooms_controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +12,9 @@ class Room_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('room');
+    { 
+        $dsroom = Room::all();
+        return view('room', compact('dsroom'));
     }
 
     /**
@@ -23,7 +24,7 @@ class Room_controller extends Controller
      */
     public function create()
     {
-        
+        return view('new_room');    
     }
 
     /**
@@ -34,7 +35,14 @@ class Room_controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $room = new Room;
+        // $room -> hotel_id = $request->hotel_id;
+        // $room -> room_type_id = $request->room_type_id;
+        // $room -> room_number = $request->room_number;
+        // $room -> avatar_room = $request->avatar_room;
+        // $room -> description_room = $request->description_room;
+        // $room -> room_status_id = $request->room_status_id;
+        // $room -> save();
     }
 
     /**
@@ -45,7 +53,8 @@ class Room_controller extends Controller
      */
     public function show($id)
     {
-        //
+        $dsroom = Room::find($id);
+        return view('room',compact('dsroom'));
     }
 
     /**
@@ -68,7 +77,16 @@ class Room_controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $dsroom = Room::find($id);
+        // $room -> hotel_id = $request->hotel_id;
+        // $room -> room_type_id = $request->room_type_id;
+        // $room -> room_number = $request->room_number;
+        // $room -> avatar_room = $request->avatar_room;
+        // $room -> description_room = $request->description_room;
+        // $room -> room_status_id = $request->room_status_id;
+        // $room -> save();
+
+
     }
 
     /**

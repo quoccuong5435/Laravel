@@ -8,7 +8,7 @@ class Home_controller extends Controller
 {
     public function home()
     {
-    	return view('welcome');
+    	return view('register');
     }
    
 }

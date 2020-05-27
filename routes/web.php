@@ -44,19 +44,19 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('room')->group(function(){
         Route::name('room.')->group(function(){
             //Danh sách phòng
-            Route::get('list', 'Room_controller@index')->name('list');
+            Route::get('/list', 'Rooms_controller@index')->name('list');
             //Thêm mới phòng
-            Route::get('/them-moi', 'Room_controller@create')->name('them-moi');
-            Route::post('/them-moi', 'Room_controller@store')->name('xu-ly-them-moi');
+            Route::get('/them-moi', 'Rooms_controller@create')->name('them-moi');
+            Route::post('/them-moi', 'Rooms_controller@store')->name('xu-ly-them-moi');
             //Cập nhập phòng
-            Route::get('/cap-nhat/{id}', 'Room_controller@edit')->name('cap-nhat');
-            Route::post('/cap-nhat/{id}', 'Room_controller@update')->name('xu-ly-cap-nhat');
+            Route::get('/cap-nhat/{id}', 'Rooms_controller@edit')->name('cap-nhat');
+            Route::post('/cap-nhat/{id}', 'Rooms_controller@update')->name('xu-ly-cap-nhat');
             
             //Xoá phòng
-            Route::get('/room-da-xoa', 'Room_controller@restoreIndex')->name('room-da-xoa');
-            Route::get('/khoi-phuc/{id}', 'Room_controller@restore')->name('khoi-phuc');
-            Route::get('/xoa/{id}', 'LinhVucController@softDeletes')->name('xoa');
-            Route::get('/xoa-bo/{id}', 'Room_controller@destroy')->name('xoa-bo');
+            Route::get('/room-da-xoa', 'Rooms_controller@restoreIndex')->name('room-da-xoa');
+            Route::get('/khoi-phuc/{id}', 'Rooms_controller@restore')->name('khoi-phuc');
+            Route::get('/xoa/{id}', 'Rooms_controller@softDeletes')->name('xoa');
+            Route::get('/xoa-bo/{id}', 'Rooms_controller@destroy')->name('xoa-bo');
             });       
     });
 
@@ -115,10 +115,11 @@ use Illuminate\Support\Facades\Route;
         Route::get('/xoa-bo/{id}', 'Booking_Controller@destroy')->name('xoa-bo');
         });
     });
-     Route::prefix('report')->group(function(){
-    Route::name('report.')->group(function(){
+     Route::prefix('guest')->group(function(){
+    Route::name('guest.')->group(function(){
         //Danh sách 
-        Route::get('/', 'Report_Controller@index')->name('danh-sach');
+        Route::get('/', 'Guest_controller@home')->name('trang-chu');
+        Route::post('/', 'Guest_controller@register')->name('register');
        
         });
     // });
