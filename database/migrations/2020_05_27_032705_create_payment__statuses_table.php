@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingsTable extends Migration
+class CreatePaymentStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking', function (Blueprint $table) {
+        Schema::create('payment_status', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('hotel_id');
-            $table->unsignedInteger('guest_id');
-            $table->integer('room_count');
-            $table->datetime('date_from');
-            $table->datetime('date_to');
-            $table->unsignedInteger('booking_status_id');
+            $table->integer('active_payment');
+            $table->string('name_payment_status');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking');
+        Schema::dropIfExists('payment_status');
     }
 }

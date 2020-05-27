@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */Route::get('/', 'Home_controller@home')->name('trang-chu');
 
-Route::middleware('auth:web')->group(function(){
+
+
+// Route::middleware('auth:web')->group(function(){
     //Trang chủ
     
     //Đăng xuất
@@ -42,19 +44,19 @@ Route::middleware('auth:web')->group(function(){
     Route::prefix('room')->group(function(){
         Route::name('room.')->group(function(){
             //Danh sách phòng
-            Route::get('/', 'RoomController@index')->name('danh-sach');
+            Route::get('list', 'Room_controller@index')->name('list');
             //Thêm mới phòng
-            Route::get('/them-moi', 'RoomController@create')->name('them-moi');
-            Route::post('/them-moi', 'RoomController@store')->name('xu-ly-them-moi');
+            Route::get('/them-moi', 'Room_controller@create')->name('them-moi');
+            Route::post('/them-moi', 'Room_controller@store')->name('xu-ly-them-moi');
             //Cập nhập phòng
-            Route::get('/cap-nhat/{id}', 'LinhVucController@edit')->name('cap-nhat');
-            Route::post('/cap-nhat/{id}', 'LinhVucController@update')->name('xu-ly-cap-nhat');
+            Route::get('/cap-nhat/{id}', 'Room_controller@edit')->name('cap-nhat');
+            Route::post('/cap-nhat/{id}', 'Room_controller@update')->name('xu-ly-cap-nhat');
             
             //Xoá phòng
-            Route::get('/room-da-xoa', 'LinhVucController@restoreIndex')->name('room-da-xoa');
-            Route::get('/khoi-phuc/{id}', 'LinhVucController@restore')->name('khoi-phuc');
+            Route::get('/room-da-xoa', 'Room_controller@restoreIndex')->name('room-da-xoa');
+            Route::get('/khoi-phuc/{id}', 'Room_controller@restore')->name('khoi-phuc');
             Route::get('/xoa/{id}', 'LinhVucController@softDeletes')->name('xoa');
-            Route::get('/xoa-bo/{id}', 'LinhVucController@destroy')->name('xoa-bo');
+            Route::get('/xoa-bo/{id}', 'Room_controller@destroy')->name('xoa-bo');
             });       
     });
 
@@ -119,7 +121,7 @@ Route::middleware('auth:web')->group(function(){
         Route::get('/', 'Report_Controller@index')->name('danh-sach');
        
         });
-    });
+    // });
 });
 
 

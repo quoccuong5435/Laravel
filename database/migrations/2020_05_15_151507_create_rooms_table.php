@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->unsignedInteger('room_type_id');
             $table->integer('room_number');
             $table->string('avatar_room');
-            $table->string('description');
+            $table->string('description_room');
             $table->unsignedInteger('room_status_id');
             $table->timestamps();
         });
